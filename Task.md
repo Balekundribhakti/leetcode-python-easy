@@ -18,3 +18,51 @@ class Solution(object):
         
 ```
 ### Explanation
+Sure, let's break down the `twoSum` function from the provided Python code:
+
+```python
+class Solution(object):
+    def twoSum(self, nums, target):
+        hash_map = {}
+
+        # Iterate through each number in the nums list along with its index
+        for i, num in enumerate(nums):
+            # Calculate the complement needed to achieve the target sum
+            complement = target - num
+            
+            # Check if the complement (target - num) is already in the hash_map
+            if complement in hash_map:
+                # If found, return the indices of the two numbers that add up to the target
+                return [hash_map[complement], i]
+            
+            # If the complement is not found in the hash_map, store the current number
+            # along with its index in the hash_map for future reference
+            hash_map[num] = i
+
+        # If no valid pairs are found, return an empty list
+        return []
+```
+
+### Explanation:
+
+1. **Initialization**:
+   - `hash_map = {}`: This initializes an empty dictionary `hash_map` where we will store numbers from the `nums` list along with their indices.
+
+2. **Iteration through `nums`**:
+   - `for i, num in enumerate(nums):` This loop iterates through each element (`num`) in the `nums` list, along with its index (`i`).
+
+3. **Finding the Complement**:
+   - `complement = target - num`: For each `num`, calculate its complement which is `target - num`. This is the number we need to find in `nums` to make up the `target`.
+
+4. **Checking in `hash_map`**:
+   - `if complement in hash_map:` Checks if the `complement` (the number needed to reach `target`) is already in `hash_map`.
+     - If it is found (`if` condition is true), it means we have already encountered the number that sums up to `target` with the current `num`. So, we return the indices `[hash_map[complement], i]`, where `hash_map[complement]` gives the index of the previously stored number and `i` gives the index of the current number.
+
+5. **Storing in `hash_map`**:
+   - `hash_map[num] = i`: If the `complement` is not found in `hash_map`, store the current `num` in `hash_map` with its index `i`.
+
+6. **Return**:
+   - If no two numbers are found that add up to `target`, the function returns an empty list `[]`.
+
+### Summary:
+The function uses a hash map (dictionary) to efficiently store and retrieve numbers as it iterates through the `nums` list. This approach ensures that the time complexity remains O(n), where n is the number of elements in the `nums` list, because checking and inserting elements into a hash map is on average O(1). This makes the function very efficient for large input sizes.
