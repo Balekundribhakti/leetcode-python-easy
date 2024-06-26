@@ -64,5 +64,3 @@ class Solution(object):
 6. **Return**:
    - If no two numbers are found that add up to `target`, the function returns an empty list `[]`.
 
-### Summary:
-The function uses a hash map (dictionary) to efficiently store and retrieve numbers as it iterates through the `nums` list. This approach ensures that the time complexity remains O(n), where n is the number of elements in the `nums` list, because checking and inserting elements into a hash map is on average O(1). This makes the function very efficient for large input sizes.
