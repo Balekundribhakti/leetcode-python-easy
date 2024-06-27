@@ -64,3 +64,7 @@ class Solution(object):
 6. **Return**:
    - If no two numbers are found that add up to `target`, the function returns an empty list `[]`.
 
+
+
+## Question 2
+![image](https://github.com/Balekundribhakti/leetcode-python-easy/assets/166371317/821f8ed9-cd3c-479a-8408-54fb03c4f583)
