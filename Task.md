@@ -92,3 +92,72 @@ class Solution(object):
         
 ```
 ### Explanation
+Certainly! Let's break down the provided code in simple terms:
+
+```python
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        # Check if the number is negative
+        if (x < 0):
+            return False
+        
+        # Initialize variables
+        i = x  # i will be used to manipulate the number
+        s = 0  # s will store the reversed number
+        
+        # Reverse the number
+        while (i > 0):
+            d = i % 10       # Get the last digit of i
+            s = s * 10 + d   # Append the last digit to s in reverse order
+            i = i // 10      # Remove the last digit from i
+        
+        # Check if the original number x is equal to the reversed number s
+        if (x == s):
+            return True
+        else:
+            return False
+```
+
+### Explanation:
+
+1. **Function Definition**: The code defines a class `Solution` with a method `isPalindrome` that checks if a given integer `x` is a palindrome.
+
+2. **Handling Negative Numbers**: 
+   - If `x` is negative (`x < 0`), it immediately returns `False`. Palindromes are typically considered only for non-negative integers.
+
+3. **Reversing the Number**:
+   - Initialize `i` with the value of `x`. `i` is used to iterate through and manipulate the number.
+   - Initialize `s` to `0`. `s` will store the reversed version of `x`.
+   - Using a `while` loop, continue until `i` is greater than `0`.
+   - Inside the loop:
+     - `d = i % 10`: Obtain the last digit of `i`.
+     - `s = s * 10 + d`: Build the reversed number `s` by appending the last digit `d` in reverse order.
+     - `i = i // 10`: Remove the last digit from `i` using integer division to prepare for the next iteration.
+
+4. **Comparison**:
+   - After exiting the loop, compare the original number `x` with the reversed number `s`.
+   - If they are equal (`x == s`), return `True`, indicating `x` is a palindrome.
+   - Otherwise, return `False`.
+
+### Example:
+- For `x = 121`:
+  - Initial check: `x` is not negative, so continue.
+  - During the loop:
+    - `i` becomes `121`, `12`, `1` and eventually `0`.
+    - `s` accumulates digits to become `121`, `12`, `1` (reversed).
+  - After the loop:
+    - Check `121 == 121`, which is `True`.
+
+- For `x = 123`:
+  - Initial check: `x` is not negative, so continue.
+  - During the loop:
+    - `i` becomes `123`, `12`, `1` and eventually `0`.
+    - `s` accumulates digits to become `321`.
+  - After the loop:
+    - Check `123 == 321`, which is `False`.
+
+This function effectively determines if `x` is a palindrome by reversing its digits and comparing the reversed version to the original.
