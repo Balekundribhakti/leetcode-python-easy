@@ -67,6 +67,7 @@ class Solution(object):
 
 
 ## Question 2
+### [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
 ![image](https://github.com/Balekundribhakti/leetcode-python-easy/assets/166371317/821f8ed9-cd3c-479a-8408-54fb03c4f583)
 
 ### Answer
