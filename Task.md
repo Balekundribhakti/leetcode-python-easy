@@ -161,3 +161,48 @@ class Solution(object):
     - Check `123 == 321`, which is `False`.
 
 This function effectively determines if `x` is a palindrome by reversing its digits and comparing the reversed version to the original.
+
+
+## Question 3
+### [Roman to Integer](https://leetcode.com/problems/roman-to-integer/description/)
+![image](https://github.com/Balekundribhakti/leetcode-python-easy/assets/166371317/84c34f95-ea56-4725-9528-c33e66714e65)
+
+
+### Answer
+```
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        symbol_hash = {
+            'I': 1,
+            'IV': 4,
+            'V': 5,
+            'IX': 9,
+            'X': 10,
+            'XL': 40,
+            'L': 50,
+            'XC': 90,
+            'C': 100,
+            'CD': 400,
+            'D': 500,
+            'CM': 900,
+            'M': 1000,
+        }
+
+        integer = 0
+        i = 0
+        while i < len(s):
+            two_val = symbol_hash.get(s[i:i + 2])
+            if two_val:
+                integer += two_val
+                i += 2
+            else:
+                integer += symbol_hash[s[i]]
+                i += 1
+        return integer
+
+```
+### Explanation
