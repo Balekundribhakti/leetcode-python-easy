@@ -206,3 +206,79 @@ class Solution(object):
 
 ```
 ### Explanation
+Sure, let's break down the `romanToInt` function step by step:
+
+### Step-by-Step Explanation:
+
+1. **Define a Class and Method**:
+   ```python
+   class Solution(object):
+       def romanToInt(self, s):
+   ```
+   - `Solution` is a class.
+   - `romanToInt` is a method within that class which takes a string `s` representing a Roman numeral and returns its integer equivalent.
+
+2. **Mapping Roman Numerals to Integers**:
+   ```python
+   symbol_hash = {
+       'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10,
+       'XL': 40, 'L': 50, 'XC': 90, 'C': 100,
+       'CD': 400, 'D': 500, 'CM': 900, 'M': 1000,
+   }
+   ```
+   - `symbol_hash` is a dictionary that maps Roman numeral symbols and combinations to their integer values.
+
+3. **Initialize Variables**:
+   ```python
+   integer = 0
+   i = 0
+   ```
+   - `integer` will store the final converted integer value.
+   - `i` is an index to iterate through the string `s`.
+
+4. **Iterate Through the String**:
+   ```python
+   while i < len(s):
+   ```
+   - This loop will run until `i` reaches the length of the string `s`.
+
+5. **Check for Two-Character Symbols**:
+   ```python
+   two_val = symbol_hash.get(s[i:i + 2])
+   if two_val:
+       integer += two_val
+       i += 2
+   ```
+   - `s[i:i + 2]` checks the next two characters starting from index `i`.
+   - `symbol_hash.get(s[i:i + 2])` tries to find the value of the two-character symbol in the dictionary.
+   - If `two_val` is not `None` (i.e., a two-character symbol is found), add its value to `integer` and increment `i` by 2 to skip these two characters.
+
+6. **Check for Single-Character Symbols**:
+   ```python
+   else:
+       integer += symbol_hash[s[i]]
+       i += 1
+   ```
+   - If a two-character symbol is not found, it means the current character is a single-character symbol.
+   - Add the value of the single character `s[i]` to `integer` and increment `i` by 1.
+
+7. **Return the Result**:
+   ```python
+   return integer
+   ```
+   - After the loop finishes, `integer` will contain the converted integer value of the Roman numeral.
+
+### Example:
+
+Let's say the input is "XIV":
+
+1. Start with `integer = 0` and `i = 0`.
+2. Check `s[0:2]` ("XI") – not found in `symbol_hash`, so:
+   - Add value of `s[0]` ("X" = 10) to `integer`, making `integer = 10`.
+   - Increment `i` to 1.
+3. Check `s[1:3]` ("IV") – found in `symbol_hash` with value 4.
+   - Add 4 to `integer`, making `integer = 14`.
+   - Increment `i` to 3 (past the end of the string).
+4. The loop ends, and the function returns 14.
+
+This function effectively handles both single and double-character Roman numeral symbols, converting the input string to its corresponding integer value.
