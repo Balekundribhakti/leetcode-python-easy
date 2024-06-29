@@ -282,3 +282,73 @@ Let's say the input is "XIV":
 4. The loop ends, and the function returns 14.
 
 This function effectively handles both single and double-character Roman numeral symbols, converting the input string to its corresponding integer value.
+
+
+## Question 4
+### [longest common prefix](https://leetcode.com/problems/longest-common-prefix/submissions/1303636394/)
+![image](https://github.com/Balekundribhakti/leetcode-python-easy/assets/166371317/e8816d4e-4e03-402d-a86a-b835d300ed33)
+
+### Answer
+```
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        res = ""
+
+        for i in range(len(strs[0])):
+            for s in strs:
+                if i == len(s) or s[i] != strs[0][i]:
+                    return res
+            res += strs[0][i]
+        return res            
+```
+### Explanation
+Sure! Let's break down the code step by step:
+
+1. **Function Definition**: 
+    ```python
+    def longestCommonPrefix(self, strs):
+    ```
+    - This defines a method `longestCommonPrefix` that takes two arguments: `self` (as it's part of a class) and `strs` (a list of strings).
+
+2. **Initialize Result**:
+    ```python
+    res = ""
+    ```
+    - An empty string `res` is initialized to store the common prefix.
+
+3. **Outer Loop (Character Index)**:
+    ```python
+    for i in range(len(strs[0])):
+    ```
+    - This loop goes through each character index `i` of the first string in the list `strs`.
+
+4. **Inner Loop (Each String)**:
+    ```python
+    for s in strs:
+    ```
+    - This loop goes through each string `s` in the list `strs`.
+
+5. **Condition to Stop and Return Result**:
+    ```python
+    if i == len(s) or s[i] != strs[0][i]:
+        return res
+    ```
+    - This checks two conditions:
+      1. If the current index `i` is equal to the length of the string `s`, it means we've reached the end of the string `s`.
+      2. If the character at index `i` of string `s` is not the same as the character at index `i` of the first string `strs[0]`.
+    - If either condition is true, it means the current character is not common in all strings, so the function returns the common prefix found so far (`res`).
+
+6. **Append Common Character to Result**:
+    ```python
+    res += strs[0][i]
+    ```
+    - If the character at index `i` is common in all strings, it is added to the result `res`.
+
+7. **Return the Result**:
+    ```python
+    return res
+    ```
+    - After all characters have been checked, the function returns the longest common prefix.
+
+
+
